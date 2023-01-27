@@ -19,7 +19,7 @@ export default function Navbar(){
         <>
         <header>
             {/* <a className="logo" href="/"><img src="/images/logo.svg" alt="logo" /></a> */}
-            <h2>Mr. Shah Claculator</h2>
+            <h2>Mr. Shah </h2>
             <nav>
                 <ul className="nav__links">
                     <li><a href="/">Finance</a></li>
