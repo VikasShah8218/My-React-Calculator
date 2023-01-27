@@ -1,0 +1,16 @@
+button{
+    width: max-content;
+    padding: 3%;
+    color: white;
+    background-color: #07748F;
+    border: none;
+    border-radius:100px; 
+    cursor: pointer;
+    transition: transform .2s;
+}
+button:hover{
+   transform: scale(1.1);
+   background-color: #0984a3;
+   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
