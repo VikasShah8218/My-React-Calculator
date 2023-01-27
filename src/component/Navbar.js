@@ -18,24 +18,24 @@ export default function Navbar(){
     return(
         <>
         <header>
-            {/* <a className="logo" href="/"><img src="/images/logo.svg" alt="logo" /></a> */}
+            {/* <a className="logo" href="javascript:void(0);"><img src="/images/logo.svg" alt="logo" /></a> */}
             <h2>Mr. Shah Claculator</h2>
             <nav>
                 <ul className="nav__links">
-                    <li><a href="/">Finance</a></li>
-                    <li><a href="/">Maths</a></li>
-                    <li><a href="/">Health</a></li>
+                    <li><a href="javascript:void(0);">Finance</a></li>
+                    <li><a href="javascript:void(0);">Maths</a></li>
+                    <li><a href="javascript:void(0);">Health</a></li>
                 </ul>
             </nav>
-            <a className="cta" href="/">Contact</a>
+            <a className="cta" href="javascript:void(0);">Contact</a>
             <p onClick={test} className="menu cta">Menu</p>
         </header>
         <div className={cls}>
-            <a onClick={test} href="/" className="close">&times;</a>
+            <a onClick={test} href="javascript:void(0);" className="close">&times;</a>
             <div className="overlay__content">
-                <a href="/">Finance</a>
-                <a href="/">Maths</a>
-                <a href="/">Health</a>
+                <a href="javascript:void(0);">Finance</a>
+                <a href="javascript:void(0);">Maths</a>
+                <a href="javascript:void(0);">Health</a>
             </div>
         </div>
         <script type="text/javascript" src="mobile.js"></script>
