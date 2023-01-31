@@ -63,7 +63,16 @@ button{
     border: 1px solid rgba(0, 0, 0, 0.39);
     margin-bottom: 5px;
 }
-
+.lumsum-input-area .input{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.sip-input-area .input{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 @media screen and (max-width:800px) {
     .lumsum{
         flex-direction: column;
@@ -80,4 +89,5 @@ button{
         align-items: center;
         font-size: 15px;
     }
+   
 }
