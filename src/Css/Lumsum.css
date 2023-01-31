@@ -9,10 +9,14 @@
 }
 .lumsum .lumsum-chart{
     width:500px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+   
     margin-left:10%;
 }
 .lumsum .lumsum-content{
     margin-left:10%;
+    padding: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .lumsum input{
     padding: 8px;
@@ -31,16 +35,47 @@
 button{
     margin: auto;
 }
+.lumsum-button{
+    color: white;
+    background-color: black;
+    border-radius: 200px;
+    border:1px solid ;
+    border-color: rgb(0, 0, 0);
+    min-width: 130px;
+    margin-left: auto;
+}
+
+.lumsum-button-div button:hover{
+    background-color: rgb(48, 48, 48);
+
+}
+.lumsum-button-div{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    /* background-color: #d3d3d3; */
+    border-radius: 250px;
+    /* padding: 7px; */
+    margin-bottom: 10px;
+}
+
+.devider{
+    border: 1px solid rgba(0, 0, 0, 0.39);
+    margin-bottom: 5px;
+}
+
 @media screen and (max-width:800px) {
     .lumsum{
         flex-direction: column;
     }
     .lumsum .lumsum-chart{
         width: 100%;
+        
         margin: 0;
     }
     .lumsum .lumsum-content{
         margin: 0;
+        margin-bottom: 50px;
         justify-items: center;
         align-items: center;
         font-size: 15px;

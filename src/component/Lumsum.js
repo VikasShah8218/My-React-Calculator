@@ -21,6 +21,17 @@ export default function Lumsum(){
     const [total,settl] = useState();
     const [totalIntrest,settotalIntrest] = useState();
     const [answer,setAnswer] = useState("");
+    
+    const [sip,setSip] = useState();
+    const [sipRoe,setSipRoe] = useState();
+    const [sipTm,setSipTm] = useState();
+    const [sipInvested,setSipInvested] =  useState();
+    const [sipIntrest,setSipIntrest] = useState();
+    const [sipAnswer,setSipAnswer] = useState();
+    
+    const [displayLumsun,setDisplayLumsum] = useState({display:"block"})
+    const [displaySip,setDisplaySip] = useState({display:"none"})
+
     const calculation  = () => {
       let principle = parseInt(ppl);
       let intrust = parseInt(roe);
@@ -67,50 +78,152 @@ export default function Lumsum(){
     settl("")
     setChartdata("")
 
+    }
+    
+   const sipPplChange = (event) =>{
+      setSip(event.target.value);
+    }
+   const sipRoeChange = (event) =>{
+      setSipRoe(event.target.value);
+    }
+   const sipTmChange = (event) =>{
+      setSipTm(event.target.value);
+    }
+   const SipClearData = () =>{
+      setSip("");
+      setSipAnswer("");
+      setSipIntrest("");
+      setSipRoe("");
+      setSipTm("");
+      setSipInvested("");
+      setChartdata("");
+    }
+   const Sipcalculation = () =>{
+    let sipP  = parseInt(sip);
+    let tp = parseInt(sipTm);
+    let roi = parseInt(sipRoe);
+ 
+    const month_intrest = (parseFloat((roi/12)/100));
+    let maturity = (parseFloat(sipP));
+    const no_of_it = tp*12;
+    let months = [];
+    let intrest_earn = [];
+    for (let index = 1; index < (no_of_it+1) ; index++) {
+      maturity = maturity + (parseFloat(month_intrest*maturity));
+      months.push(index);
+      if (no_of_it !== index){
+        maturity += sipP
+      }
+      intrest_earn.push(parseInt(maturity))
+    }
+    let sipTotal = intrest_earn[intrest_earn.length - 1];
+    let sipInvestedMoney = sipP*intrest_earn.length
+    let sipReturnPercent = (((sipTotal-sipInvestedMoney)/sipInvestedMoney)*100).toFixed(2);
+
+    setSipIntrest(sipReturnPercent + "%")
+    setSipInvested(sipInvestedMoney);
+    setSipAnswer(sipTotal);
+
+    // chart set
+    setChartdata({
+      labels:months ,
+      datasets: [{
+        label: 'Growth',
+        data:intrest_earn ,
+        borderWidth: 2,
+          cubicInterpolationMode: 'monotone',
+        
+      }]
+    })
+
+
    }
-     
+   const toggleDisplay2 = () =>{
+        setDisplayLumsum({display:"none"});
+        setDisplaySip({display:"block"});
+        console.log("Success");
+   }
+   const toggleDisplay1 = () =>{    
+        setDisplayLumsum({display:"block"});
+        setDisplaySip({display:"none"});
+        console.log("Error");
+   }
     return(
     <>
     <div className="lumsum">
         <div className="lumsum-content"  >
-        <h3>Lumsum Calculator</h3>
-        <div className="input">
-        <label htmlFor="principle">Principle Amount</label>
-        <input value={ppl}  onChange={pplChange} type="number" id="principle" />
-        </div>
-        <div className="input">
-        <label htmlFor="principle">Rate Of Intrest/Year</label>
-        <input  value={roe} onChange={roeChange} type="number" id="principle" />
-        </div>
-        <div className="input">
-        <label htmlFor="principle">Time Period (Year)</label>
-        <input value={tm} onChange={tmChange} type="number" id="principle" />
-        </div>
-        <div className="lumsumOutput">
-          <h3 >
-          <span className="textData0"> Benefit : </span><span className="textData"> {answer}</span> 
-            <br />
-          <span className="textData0">  Intrest :</span><span className="textData"> {totalIntrest}</span> 
-            <br />
-          <span className="textData0"> Value : </span><span className="textData"> {total}</span> 
-          </h3>
-        </div >
-        <div className='calButton'>
-        <button style={{marginRight:"10px"}} onClick={calculation}  type="button">Claculate Intrest</button>
-        <button onClick={clearData}  type="button">Clear Data</button>
-        </div>
+          <div className="lumsum-button-div"  >
+            <button className='lumsum-button' onClick={toggleDisplay1}> <i className="fa-solid fa-arrow-up-right-dots"></i> Lumsum </button>
+            <button className='lumsum-button' onClick={toggleDisplay2}> <i className="fa-solid fa-bolt"></i> Sip </button>
+          </div>
+          <div className='lumsum-input-area' style={displayLumsun}>
+            <div className='devider'></div>
+            <div className="input">
+              <label htmlFor="principle">Principle Amount</label>
+              <input value={ppl}  onChange={pplChange} type="number" id="principle" />
+            </div>
+            <div className="input">
+              <label htmlFor="principle">Rate Of Intrest/Year</label>
+              <input  value={roe} onChange={roeChange} type="number" id="principle" />
+            </div>
+            <div className="input">
+              <label htmlFor="principle">Time Period (Year)</label>
+              <input value={tm} onChange={tmChange} type="number" id="principle" />
+            </div>
+            <div className="lumsumOutput">
+                <h3 >
+                  <span className="textData0"> Benefit : </span><span className="textData"> {answer}</span> 
+                    <br />
+                  <span className="textData0">  Intrest :</span><span className="textData"> {totalIntrest}</span> 
+                    <br />
+                  <span className="textData0"> Value : </span><span className="textData"> {total}</span> 
+                </h3>
+            </div >
+            <div className='calButton'>
+              <button style={{marginRight:"10px"}} onClick={calculation}  type="button">Claculate Intrest</button>
+              <button onClick={clearData}  type="button">Clear Data</button>
+            </div>
+          </div>
+          <div className='sip-input-area' style={displaySip} >
+            <div className='devider'></div>
+            <div className="input">
+              <label htmlFor="principle">Monthly Sip </label>
+              <input value={sip}  onChange={sipPplChange} type="number" id="principle" />
+            </div>
+            <div className="input">
+              <label htmlFor="principle">Rate Of Intrest/Year</label>
+              <input  value={sipRoe} onChange={sipRoeChange} type="number" id="principle" />
+            </div>
+            <div className="input">
+              <label htmlFor="principle">Time Period (Year)</label>
+              <input value={sipTm} onChange={sipTmChange} type="number" id="principle" />
+            </div>
+            <div className="lumsumOutput">
+                <h3 >
+                  <span className="textData0"> Total SIP : </span><span className="textData"> {sipInvested} </span> 
+                    <br />
+                  <span className="textData0">  Intrest :</span><span className="textData"> {sipIntrest}</span> 
+                    <br />
+                  <span className="textData0">Net Value : </span><span className="textData">{sipAnswer}</span> 
+                </h3>
+            </div >
+            <div className='calButton'>
+              <button style={{marginRight:"10px"}} onClick={Sipcalculation}  type="button">Claculate Intrest</button>
+              <button onClick={SipClearData}  type="button">Clear Data</button>
+            </div>
+          </div>
         </div>
         <div className="lumsum-chart" >
-        <Line data = {chartData}
-        options={
-             {
-                scales: {
-                  y: {
-                    beginAtZero: true
+          <Line data = {chartData}
+          options={
+              {
+                  scales: {
+                    y: {
+                      beginAtZero: true
+                    }
                   }
                 }
-              }
-        }/>
+          }/>
         </div>
     </div>
     </>
