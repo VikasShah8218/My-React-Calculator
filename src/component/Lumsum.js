@@ -32,6 +32,19 @@ export default function Lumsum(){
     const [displayLumsun,setDisplayLumsum] = useState({display:"block"})
     const [displaySip,setDisplaySip] = useState({display:"none"})
 
+    const [checkbox,setCheckBox] = useState("");
+    const [sipText,setSipText] = useState("Monthly Sip");
+    const checkBoxFun = () =>{
+      if (checkbox === ""){
+        setCheckBox("checked");
+        setSipText("Yearly SIP");
+      }
+      else{
+        setCheckBox("");
+        setSipText("Monthly SIP");
+
+      }
+    }
     const calculation  = () => {
       let principle = parseInt(ppl);
       let intrust = parseInt(roe);
@@ -102,12 +115,17 @@ export default function Lumsum(){
     let sipP  = parseInt(sip);
     let tp = parseInt(sipTm);
     let roi = parseInt(sipRoe);
- 
-    const month_intrest = (parseFloat((roi/12)/100));
+
     let maturity = (parseFloat(sipP));
-    const no_of_it = tp*12;
     let months = [];
     let intrest_earn = [];
+    let month_intrest = (parseFloat((roi/12)/100));
+    let no_of_it = tp*12;
+    if (checkbox==="checked"){
+      month_intrest = (parseFloat((roi)/100));
+      no_of_it = tp;
+    }
+
     for (let index = 1; index < (no_of_it+1) ; index++) {
       maturity = maturity + (parseFloat(month_intrest*maturity));
       months.push(index);
@@ -116,6 +134,7 @@ export default function Lumsum(){
       }
       intrest_earn.push(parseInt(maturity))
     }
+
     let sipTotal = intrest_earn[intrest_earn.length - 1];
     let sipInvestedMoney = sipP*intrest_earn.length
     let sipReturnPercent = (((sipTotal-sipInvestedMoney)/sipInvestedMoney)*100).toFixed(2);
@@ -187,7 +206,11 @@ export default function Lumsum(){
           <div className='sip-input-area' style={displaySip} >
             <div className='devider'></div>
             <div className="input">
-              <label htmlFor="principle">Monthly Sip </label>
+              <label htmlFor="principle">{sipText} </label>
+              <div style={{fontSize:"13px"}}>
+              <input type="checkbox" onClick={checkBoxFun} id="year-sip" name="year-sip"  />
+              <label htmlFor="year-sip">Yearly</label>
+              </div>
               <input value={sip}  onChange={sipPplChange} type="number" id="principle" />
             </div>
             <div className="input">
