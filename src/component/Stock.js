@@ -9,8 +9,8 @@ export default function Stock(){
             <div className="stockName"> RELIANCE </div>
             <div className="dot">.</div>
             <div className="stockPrice"> 2330.00 </div>
-            <div className="price-change">+3.05</div>
-            <div className="price-percent">(0.13% <i class="fa-solid fa-arrow-down"></i>)</div>
+            <div className="price-change"style={{color:"green"}}>+3.05</div>
+            <div className="price-percent"style={{color:"green"}}>(0.13% <i class="fa-solid fa-arrow-up"></i>)</div>
             <div className="stock-end"></div>
         </div>
         <div className="stocks">
@@ -27,9 +27,9 @@ export default function Stock(){
             <div className="stockName"> HDFCBANK </div>
             <div className="dot">.</div>
             <div className="stockPrice"> 1658.25 </div>
-            <div className="price-change">+54.90</div>
+            <div className="price-change"style={{color:"green"}}>+54.90</div>
             <div className="price-percent" style={{color:"green"}}>(3.42% <i class="fa-solid fa-arrow-up"></i>)</div>
-            <div className="stock-end" style={{color:"green"}}></div>
+            <div className="stock-end" ></div>
         </div>
         <div className="stocks">
             <div className="stocklogo"><img src={process.env.PUBLIC_URL+"/stock/hcl-technologies.svg"} /></div>
