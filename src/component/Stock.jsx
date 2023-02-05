@@ -1,6 +1,12 @@
 import React from 'react'
 import nseData from './NseData.json'
+import nseStockImg from "./NseDataImage.json"
 export default function Stock(){
+      nseData.data.forEach(e=>{
+        var z =  e.symbol
+        console.log(z)
+        console.log(nseStockImg[z])
+      })
     return(
     <>
     <marquee className="Stock-present" behavior="scroll" direction="right">
@@ -16,7 +22,7 @@ export default function Stock(){
             
             
             return(<div className="stocks" key={i}>
-            <div className="stocklogo"><img src={process.env.PUBLIC_URL+"/stock/reliance.svg"} /></div>
+            <div className="stocklogo"><img src={process.env.PUBLIC_URL+`/stock/${nseStockImg[stock.symbol]}`} /></div>
             <div className="stockName"> {stock.symbol} </div>
             <div className="dot">.</div>
             <div className="stockPrice"> {stock.lastPrice} </div>
