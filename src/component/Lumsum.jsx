@@ -2,25 +2,25 @@ import React ,{useState} from 'react'
 import { Line } from 'react-chartjs-2'
 import { Chart as chartjs } from 'chart.js/auto' //very very important to view chart
 
-export default function Lumsum(){
+export default function Lumsum(props){
     const [chartData,setChartdata] = useState(
       {
-        labels: [],
+        labels: [1,2,3,4,5,6,7,8,9,10],
         datasets: [{
           label: 'Growth',
-          data:[] ,
+          data:[590000,696200,821516,969388.9,1143878.9,1349777.1,1592737,1879429.6,2217726.9,2616917.8] ,
           borderWidth: 2,
             cubicInterpolationMode: 'monotone',
           
         }]
       }
     );
-    const [ppl,setPpl] = useState();
-    const [roe,setRoe] = useState();
-    const [tm,setTm] = useState();
-    const [total,settl] = useState();
-    const [totalIntrest,settotalIntrest] = useState();
-    const [answer,setAnswer] = useState("");
+    const [ppl,setPpl] = useState(500000);
+    const [roe,setRoe] = useState(18);
+    const [tm,setTm] = useState(10);
+    const [total,settl] = useState(2116917.78);
+    const [totalIntrest,settotalIntrest] = useState(423.38+"%");
+    const [answer,setAnswer] = useState(2616917.78);
     
     const [sip,setSip] = useState();
     const [sipRoe,setSipRoe] = useState();
@@ -169,7 +169,7 @@ export default function Lumsum(){
    }
     return(
     <>
-    <div className="lumsum">
+    <div className="lumsum" style={props.display}>
         <div className="lumsum-content"  >
           <div className="lumsum-button-div"  >
             <button className='lumsum-button' onClick={toggleDisplay1}> <i className="fa-solid fa-arrow-up-right-dots"></i> Lumsum </button>

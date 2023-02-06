@@ -1,0 +1,51 @@
+.Heat-map-box{
+    display: flex;
+    justify-content: space-between;
+    padding:  0 70px 0 70px;
+    margin-top:25px;
+    margin-bottom: 25px;
+
+}
+.Heat-map-box .heat-map{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    
+    padding: 5px;
+}
+.Heat-map-box .heat-map .stocks{
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-weight: lighter; */
+    font-size: smaller;
+    width: 67px;
+    height: 65px;
+    background-color: rgba(255, 0, 0, 0.541);
+    margin: 4px 4px 4px 4px;
+    text-align: center;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    transition: transform .08s;
+}
+.Heat-map-box .heat-map .stocks:hover{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transform: scale(1.05);
+}
+.Heat-map-box .heat-map .stocks .name img{
+  width: 20%;
+  align-items: center;
+}
+.Heat-map-box .heat-map .stocks .name{
+    margin-top: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size:13px;
+}
+.Heat-map-box .heat-map .stocks .price{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+.Heat-map-box .heat-map .stocks .pChange{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}

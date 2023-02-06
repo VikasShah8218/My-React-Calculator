@@ -1,12 +1,6 @@
 import React, {useState} from 'react'
-export default function Navbar(){
+export default function Navbar(props){
     const [cls,setCls] = useState("overlay")
-    // const openMenu = () =>{
-    //     setCls("overlay overlay--active");
-    // }
-    // const closeMenu = () =>{
-    //     setCls("overlay");
-    // }
     const test =() =>{
         if (cls==="overlay"){
             setCls("overlay overlay--active");
@@ -22,9 +16,9 @@ export default function Navbar(){
             <h2>Mr. Shah Claculator</h2>
             <nav>
                 <ul className="nav__links">
-                    <li><a href="javascript:void(0);">Finance</a></li>
-                    <li><a href="javascript:void(0);">Maths</a></li>
-                    <li><a href="javascript:void(0);">Health</a></li>
+                    <li><a href="javascript:void(0);" onClick={()=>props.Navigation("Finance")} >Finance</a></li>
+                    <li><a href="javascript:void(0);" onClick={()=>props.Navigation("Stocks")} >Stocks</a></li>
+                    <li><a href="javascript:void(0);" onClick={()=>props.Navigation("Maths")} >Maths</a></li>
                 </ul>
             </nav>
             <a className="cta" href="javascript:void(0);">Contact</a>
@@ -33,9 +27,9 @@ export default function Navbar(){
         <div className={cls}>
             <a onClick={test} href="javascript:void(0);" className="close">&times;</a>
             <div className="overlay__content">
-                <a href="javascript:void(0);">Finance</a>
-                <a href="javascript:void(0);">Maths</a>
-                <a href="javascript:void(0);">Health</a>
+                <a href="javascript:void(0);" onClick={()=>props.Navigation("Finance")}>Finance</a>
+                <a href="javascript:void(0);" onClick={()=>props.Navigation("Stocks")}>Stocks</a>
+                <a href="javascript:void(0);" onClick={()=>props.Navigation("Maths")}>Maths</a>
             </div>
         </div>
         <script type="text/javascript" src="mobile.js"></script>

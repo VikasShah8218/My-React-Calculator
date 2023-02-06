@@ -1,15 +1,15 @@
 import React from 'react'
 import nseData from './NseData.json'
 import nseStockImg from "./NseDataImage.json"
-export default function Stock(){
-      nseData.data.forEach(e=>{
-        var z =  e.symbol
-        console.log(z)
-        console.log(nseStockImg[z])
-      })
+export default function Stock(props){
+      // nseData.data.forEach(e=>{
+      //   var z =  e.symbol
+      //   console.log(z)
+      //   console.log(nseStockImg[z])
+      // })
     return(
     <>
-    <marquee className="Stock-present" behavior="scroll" direction="right">
+    <marquee className="Stock-present"  behavior="scroll" direction={props.direction}>
         <div className='main-Stock-present'>
           {nseData.data.map(function(stock,i){
             // const color = (parseFloat(stock.change)<0)?{color:"red"}:{color:'green'}
@@ -27,10 +27,10 @@ export default function Stock(){
             <div className="dot">.</div>
             <div className="stockPrice"> {stock.lastPrice} </div>
             <div className="price-change" style={color}>{stock.change}</div>
-            <div className="price-percent"style={color}>({stock.pChange}%) <i className={`fa-solid fa-arrow-${aero}`}></i>)</div>
+            <div className="price-percent"style={color}>({stock.pChange}%  <i className={`fa-solid fa-arrow-${aero}`}></i>)</div>
             <div className="stock-end"></div>
-        </div>);
-          })};
+        </div>)
+          })}
         
         </div>
     </marquee>
