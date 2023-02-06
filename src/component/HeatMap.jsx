@@ -37,7 +37,7 @@ export default function HeatMap(props){
                 })}
             </div>
             {/* the heat-chart style always in 1:2 ratio width height */}
-            <div className="heat-chart" style={{width:"630px",height:"360px"}}>
+            <div className="heat-chart">
             <Bar width={"200%"} height={"100%"}  data =  {{
             labels: days30Sym,
             datasets: [{
