@@ -3,6 +3,7 @@ import { Bar } from 'react-chartjs-2'
 import { Chart as chartjs } from 'chart.js/auto' //very very important to view chart
 import nseData from './NseData.json'
 import nseStockImg from "./NseDataImage.json"
+import { isCursorAtEnd } from '@testing-library/user-event/dist/utils'
 
 export default function HeatMap(props){
     const [days30,setDays30] = useState([1,2,3,4,5,6,7,8,9,10]);
@@ -30,7 +31,7 @@ export default function HeatMap(props){
                       aero = 'up';
                     }
                 return(<div className="stocks" kry={i} style={color}>
-                <div className="name"><img style={{borderRadius:"50%"}} src={process.env.PUBLIC_URL+`/stock/${(nseStockImg[stock.symbol])}`}  /> {(stock.symbol).length<=5?stock.symbol:(stock.symbol).slice(0,5)}</div>
+                <div className="name" style={{cursor:"url(),pointer"}} ><img style={{borderRadius:"50%"}} src={process.env.PUBLIC_URL+`/stock/${(nseStockImg[stock.symbol])}`}  /> {(stock.symbol).length<=5?stock.symbol:(stock.symbol).slice(0,5)}</div>
                 <div className="price">{stock.lastPrice}</div>
                 <div className="pChange">{stock.pChange}%  <i className={`fa-solid fa-arrow-${aero}`}></i></div>
                 </div>)

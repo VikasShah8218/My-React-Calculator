@@ -9,7 +9,7 @@
 .Heat-map-box .heat-map{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    
+    cursor: pointer;
     padding: 5px;
 }
 .Heat-map-box .heat-map .stocks{
@@ -53,6 +53,7 @@
     width:630px;
     height: 315px;
 }
+
 @media screen and (max-width:780px) {
     .Heat-map-box{
         display: flex;
