@@ -35,10 +35,10 @@ export default function Footer(){
                 <div className="footer-col">
                     <h4>follow us</h4>
                     <div className="social-links">
-                        <a href="javascript:void(0);"><i className="fab fa-facebook-f"></i></a>
-                        <a href="javascript:void(0);"><i className="fab fa-twitter"></i></a>
-                        <a href="javascript:void(0);"><i className="fab fa-instagram"></i></a>
-                        <a href="javascript:void(0);"><i className="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/Er.Mr.Shah/" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/ErMrShah" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/er_vikas_shah/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/mr-vikas-shah-248586253/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>

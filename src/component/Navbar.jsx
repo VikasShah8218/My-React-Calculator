@@ -1,14 +1,6 @@
 import React, {useState} from 'react'
 export default function Navbar(props){
-    const [cls,setCls] = useState("overlay")
-    const test =() =>{
-        if (cls==="overlay"){
-            setCls("overlay overlay--active");
-        }
-        else if( cls === "overlay overlay--active"){
-            setCls("overlay");
-        }
-    }
+   
     return(
         <>
         <header>
@@ -22,14 +14,14 @@ export default function Navbar(props){
                 </ul>
             </nav>
             <a className="cta" href="javascript:void(0);">Contact</a>
-            <p onClick={test} className="menu cta">Menu</p>
+            <p onClick={props.navToggle} className="menu cta">Menu</p>
         </header>
-        <div className={cls}>
-            <a onClick={test} href="javascript:void(0);" className="close">&times;</a>
+        <div className={props.cls}>
+            <a onClick={props.navToggle} href="javascript:void(0);" className="close">&times;</a>
             <div className="overlay__content">
-                <a href="javascript:void(0);" onClick={()=>props.Navigation("Finance")}>Finance</a>
-                <a href="javascript:void(0);" onClick={()=>props.Navigation("Stocks")}>Stocks</a>
-                <a href="javascript:void(0);" onClick={()=>props.Navigation("Maths")}>Maths</a>
+                <a href="javascript:void(0);" onClick={()=>props.Navigation("finance")}>Finance</a>
+                <a href="javascript:void(0);" onClick={()=>props.Navigation("stocks")}>Stocks</a>
+                <a href="javascript:void(0);" onClick={()=>props.Navigation("maths")}>Maths</a>
             </div>
         </div>
         <script type="text/javascript" src="mobile.js"></script>

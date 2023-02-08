@@ -14,19 +14,41 @@ import {useState} from 'react';
 function App() {
   const [lumsum,setLumsum] = useState({display:""});
   const [heatMap,setHeatMap] = useState({display:"none"});
+  const [cls,setCls] = useState("overlay")
+  const test =() =>{
+      if (cls==="overlay"){
+          setCls("overlay overlay--active");
+      }
+      else if( cls === "overlay overlay--active"){
+          setCls("overlay");
+      }}
   const Navigation = (navItem) =>{
     if (navItem === "Finance"){
       setLumsum({display:""});
       setHeatMap({display:"none"});
+      
+
     }
     else if(navItem === "Stocks" ){
       setLumsum({display:"none"});
       setHeatMap({display:"block"});
+      
+    }
+    else if (navItem === "finance"){
+      setLumsum({display:""});
+      setHeatMap({display:"none"});
+      test();
+
+    }
+    else if(navItem === "stocks" ){
+      setLumsum({display:"none"});
+      setHeatMap({display:"block"});
+      test();
     }
   } 
   return (
     <>
-    <Navbar Navigation = {Navigation} />
+    <Navbar Navigation = {Navigation} navToggle={test} cls= {cls}/>
     <StockNav direction="right"/>
     <Lumsum display= {lumsum} />
     <HeatMap display= {heatMap} />
