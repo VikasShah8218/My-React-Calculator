@@ -14,8 +14,24 @@ export default function HeatMap(props){
         days30A.push(stock.perChange30d);
         days30SymA.push((stock.symbol).length<=5?stock.symbol:(stock.symbol).slice(0,5));
     });
-    
     useEffect(()=>{setDays30(days30A);setDays30sym(days30SymA);},[])
+    const stockData = (name) =>{
+        console.log(name);
+        let stockData = [];
+        let stockLable = ["Today" , "Last 30 Days" , "Last 1 Year "]
+        nseData.data.map(function(stock,i){
+            if (stock.symbol == name){
+                console.log(stock.previousClose);
+                stockData.push(stock.pChange);
+                stockData.push(stock.perChange30d);
+                stockData.push(stock.perChange365d);
+                setDays30(stockData);
+                setDays30sym(stockLable);
+                
+            } 
+        });
+        
+    }
 
    
 
@@ -30,10 +46,11 @@ export default function HeatMap(props){
                       color = {backgroundColor:"#00800066"};
                       aero = 'up';
                     }
-                return(<div className="stocks" kry={i} style={color}>
-                <div className="name" style={{cursor:"url(),pointer"}} ><img style={{borderRadius:"50%"}} src={process.env.PUBLIC_URL+`/stock/${(nseStockImg[stock.symbol])}`}  /> {(stock.symbol).length<=5?stock.symbol:(stock.symbol).slice(0,5)}</div>
-                <div className="price">{stock.lastPrice}</div>
-                <div className="pChange">{stock.pChange}%  <i className={`fa-solid fa-arrow-${aero}`}></i></div>
+                return(
+                <div className="stocks" kry={i} style={color} onClick={()=>stockData(stock.symbol)}>
+                    <div className="name" style={{cursor:"url(),pointer"}} ><img style={{borderRadius:"50%"}} src={process.env.PUBLIC_URL+`/stock/${(nseStockImg[stock.symbol])}`}  /> {(stock.symbol).length<=5?stock.symbol:(stock.symbol).slice(0,5)}</div>
+                    <div className="price">{stock.lastPrice}</div>
+                    <div className="pChange">{stock.pChange}%  <i className={`fa-solid fa-arrow-${aero}`}></i></div>
                 </div>)
                 })}
             </div>
